@@ -1,6 +1,6 @@
 CREATE VIEW analytics_features_demo.ordinal_encoding_type AS (
   SELECT * FROM TD_OrdinalEncodingFit (
-    ON churn_data_set AS InputTable
+    ON analytics_features_demo.churn_data_set AS InputTable
     USING
     TargetColumn ('subs_type')
     Approach ('LIST')

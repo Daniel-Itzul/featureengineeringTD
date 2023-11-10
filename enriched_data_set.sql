@@ -14,3 +14,10 @@ JOIN
 
 SELECT TOP 20 * FROM analytics_features_demo.feature_enriched
 ORDER BY user_id;
+
+SELECT * FROM TD_ColumnTransformer(
+ON analytics_features_demo.churn_data_set AS InputTable
+ON analytics_features_demo.ordinal_encoding_type AS OrdinalEncodingFitTable Dimension
+ON analytics_features_demo.scaled_dimmensions AS ScaleFitTable DIMENSION
+)as dt 
+ORDER BY user_id;

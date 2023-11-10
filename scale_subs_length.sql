@@ -8,6 +8,8 @@ SELECT * FROM TD_ScaleFit (
 );
 
 SELECT * from analytics_features_demo.scaled_dimmensions;
+
+
 CREATE VIEW analytics_features_demo.feature_scaled_subs_length AS (
 SELECT * FROM TD_ScaleTransform (
   ON analytics_features_demo.churn_data_set AS InputTable
