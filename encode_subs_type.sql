@@ -1,4 +1,4 @@
-CREATE VIEW analytics_features_demo.ordinal_encoding_type AS (
+CREATE TABLE analytics_features_demo.ordinal_encoding_type AS (
   SELECT * FROM TD_OrdinalEncodingFit (
     ON analytics_features_demo.churn_data_set AS InputTable
     USING
@@ -7,18 +7,17 @@ CREATE VIEW analytics_features_demo.ordinal_encoding_type AS (
     Categories ('Basic','Pro','Premium')
     OrdinalValues (1, 2,3)  
   ) AS dt
-  );
-
- SELECT * FROM analytics_features_demo.ordinal_encoding_type;
-
-CREATE VIEW analytics_features_demo.feature_encoded_subs_type AS (
+  )WITH DATA;
+ 
+SELECT * FROM analytics_features_demo.ordinal_encoding_type;
+  
+CREATE TABLE analytics_features_demo.predicting_features AS (
 SELECT * FROM TD_OrdinalEncodingTransform (
    ON analytics_features_demo.churn_data_set AS InputTable
    ON analytics_features_demo.ordinal_encoding_type AS FitTable Dimension
    USING
-   ACCUMULATE ('user_id')  
+   ACCUMULATE ('user_id','subs_length','churn','freq_usage_month','usage_session')  
  ) AS dt
-);
+)WITH DATA;
 
-SELECT TOP 20 * FROM analytics_features_demo.feature_encoded_subs_type
-ORDER BY user_id;
+SELECT * FROM analytics_features_demo.predicting_features;
