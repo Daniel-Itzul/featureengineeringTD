@@ -20,4 +20,5 @@ SELECT * FROM TD_OrdinalEncodingTransform (
  ) AS dt
 )WITH DATA;
 
-SELECT * FROM analytics_features_demo.predicting_features;
+SELECT * FROM analytics_features_demo.predicting_features
+ORDER BY user_id;
